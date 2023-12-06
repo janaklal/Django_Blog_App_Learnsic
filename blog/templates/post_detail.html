@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="container">
+    <div class="card mb-4">
+        <h1>{{post.title}}</h1>
+        <p>
+            <strong>Author: </strong>{{post.author}}
+        </p>
+        <p>
+            {{post.body}}
+        </p>
+
+        {% if post.author == request.user %}
+        <a href="{%url 'post_edit' post.pk %}">
+            Edit this post
+        </a>
+        <br>
+        <a href="{% url 'post_delete' post.pk %}">
+            Delete
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+{% endblock content %}

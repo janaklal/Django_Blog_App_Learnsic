@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for post in post_list %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">
+                    <a href="{% url 'post_detail' post.pk %}">
+                        {{post.title}}
+                    </a>
+                </h5>
+                <p class="card-text">
+                    {{ post.body|truncatewords:20 }}
+                </p>
+                <p class="card-text">
+                    <strong>Author: </strong>{{post.author}}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}
